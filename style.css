@@ -2,29 +2,31 @@
    QUICK EDITS — cambia solo questi valori
    ========================================= */
 :root {
-  --bg: #f7f7f5;              /* Sfondo stile Notion */
-  --logo-height: 72px;        /* Altezza loghi desktop */
-  --logo-height-mobile: 42px; /* Altezza loghi mobile */
-  --section-height: 170px;    /* Altezza totale widget desktop */
-  --section-height-mobile: 110px;
-  --gap: 72px;                /* Spazio tra i loghi desktop */
-  --gap-mobile: 36px;
-  --scroll-duration: 22s;     /* Più alto = più lento */
-  --fade-size: 56px;          /* Sfumatura laterale */
+  --logo-height: 56px;          /* Altezza base loghi desktop */
+  --logo-height-mobile: 34px;   /* Altezza base loghi mobile */
+  --section-height: 150px;      /* Altezza totale widget desktop */
+  --section-height-mobile: 92px;
+  --gap: 72px;                  /* Spazio tra i loghi desktop */
+  --gap-mobile: 34px;
+  --scroll-duration: 24s;       /* Più alto = più lento */
+  --edge-fade: 7%;              /* Sfumatura ai lati */
 }
 
-/* Se vuoi provare in fretta:
+/* Se vuoi fare prove veloci:
    - widget più alto: aumenta --section-height
    - loghi più grandi: aumenta --logo-height
    - animazione più lenta: aumenta --scroll-duration
+   - più o meno spazio: cambia --gap
 */
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -38,8 +40,24 @@ body {
   align-items: center;
   width: 100%;
   height: var(--section-height);
-  background: var(--bg);
+  background: transparent;
   overflow: hidden;
+
+  /* sfumatura ai lati senza colore fisso */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--edge-fade),
+    black calc(100% - var(--edge-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black var(--edge-fade),
+    black calc(100% - var(--edge-fade)),
+    transparent 100%
+  );
 }
 
 .logo-strip__track {
@@ -57,34 +75,43 @@ body {
   flex-shrink: 0;
 }
 
-.logo-strip__group img {
-  height: var(--logo-height);
+.logo {
+  display: block;
   width: auto;
   max-width: none;
   object-fit: contain;
-  display: block;
   filter: grayscale(100%) contrast(115%);
   opacity: 0.92;
 }
 
-/* Sfumature ai lati per effetto più premium */
-.logo-strip__fade {
-  position: absolute;
-  top: 0;
-  width: var(--fade-size);
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
+/* Base */
+.logo-wave,
+.logo-leroy,
+.logo-auto1,
+.logo-witailer,
+.logo-chef {
+  height: var(--logo-height);
 }
 
-.logo-strip__fade--left {
-  left: 0;
-  background: linear-gradient(to right, var(--bg) 0%, rgba(247,247,245,0) 100%);
+/* Normalizzazione manuale */
+.logo-wave {
+  height: 52px;
 }
 
-.logo-strip__fade--right {
-  right: 0;
-  background: linear-gradient(to left, var(--bg) 0%, rgba(247,247,245,0) 100%);
+.logo-leroy {
+  height: 54px;
+}
+
+.logo-auto1 {
+  height: 58px;
+}
+
+.logo-witailer {
+  height: 50px;
+}
+
+.logo-chef {
+  height: 42px;
 }
 
 /* Pausa su hover desktop */
@@ -105,12 +132,24 @@ body {
     padding-right: var(--gap-mobile);
   }
 
-  .logo-strip__group img {
-    height: var(--logo-height-mobile);
+  .logo-wave {
+    height: 30px;
   }
 
-  .logo-strip__fade {
-    width: 28px;
+  .logo-leroy {
+    height: 31px;
+  }
+
+  .logo-auto1 {
+    height: 33px;
+  }
+
+  .logo-witailer {
+    height: 29px;
+  }
+
+  .logo-chef {
+    height: 24px;
   }
 }
 
