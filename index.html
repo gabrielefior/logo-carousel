@@ -16,7 +16,7 @@
         <img class="logo logo-witailer" src="assets/witailer.png" alt="Witailer" />
         <img class="logo logo-chef" src="assets/chef-max-mariola.png" alt="Chef Max Mariola" />
       </div>
-
+ 
       <div class="logo-strip__group" aria-hidden="true">
         <img class="logo logo-wave" src="assets/wave-marketing.png" alt="" />
         <img class="logo logo-leroy" src="assets/leroy-merlin.png" alt="" />
@@ -26,5 +26,15 @@
       </div>
     </div>
   </section>
+ 
+  <script>
+    // Comunica l'altezza reale al parent (Notion iframe)
+    function notifyHeight() {
+      var h = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: 'setHeight', height: h }, '*');
+    }
+    window.addEventListener('load', notifyHeight);
+    window.addEventListener('resize', notifyHeight);
+  </script>
 </body>
 </html>
