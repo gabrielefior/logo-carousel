@@ -11,29 +11,30 @@
   --scroll-duration: 24s;       /* Più alto = più lento */
   --edge-fade: 7%;              /* Sfumatura ai lati */
 }
-
+ 
 /* Se vuoi fare prove veloci:
    - widget più alto: aumenta --section-height
    - loghi più grandi: aumenta --logo-height
    - animazione più lenta: aumenta --scroll-duration
    - più o meno spazio: cambia --gap
 */
-
+ 
 * {
   box-sizing: border-box;
 }
-
+ 
 html, body {
   margin: 0;
   padding: 0;
   background: transparent;
-  overflow: hidden;
+  /* RIMOSSO: overflow: hidden — era questo che impediva a Notion
+     di leggere l'altezza reale del contenuto e comprimeva il widget */
 }
-
+ 
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-
+ 
 .logo-strip {
   position: relative;
   display: flex;
@@ -41,8 +42,8 @@ body {
   width: 100%;
   height: var(--section-height);
   background: #ffffff;
-  overflow: hidden;
-
+  overflow: hidden; /* overflow hidden rimane QUI (solo sul contenitore, non su body) */
+ 
   /* sfumatura ai lati senza colore fisso */
   -webkit-mask-image: linear-gradient(
     to right,
@@ -59,14 +60,14 @@ body {
     transparent 100%
   );
 }
-
+ 
 .logo-strip__track {
   display: flex;
   width: max-content;
   animation: marquee var(--scroll-duration) linear infinite;
   will-change: transform;
 }
-
+ 
 .logo-strip__group {
   display: flex;
   align-items: center;
@@ -74,7 +75,7 @@ body {
   padding-right: var(--gap);
   flex-shrink: 0;
 }
-
+ 
 .logo {
   display: block;
   width: auto;
@@ -83,76 +84,67 @@ body {
   filter: grayscale(100%) contrast(115%);
   opacity: 0.92;
 }
-
-/* Base */
-.logo-wave,
-.logo-leroy,
-.logo-auto1,
-.logo-witailer,
-.logo-chef {
-  height: var(--logo-height);
-}
-
-/* Normalizzazione manuale */
+ 
+/* Normalizzazione manuale altezze */
 .logo-wave {
   height: 52px;
 }
-
+ 
 .logo-leroy {
   height: 54px;
 }
-
+ 
 .logo-auto1 {
   height: 58px;
 }
-
+ 
 .logo-witailer {
   height: 100px;
 }
-
+ 
 .logo-chef {
   height: 42px;
 }
-
+ 
 /* Pausa su hover desktop */
 @media (hover: hover) {
   .logo-strip:hover .logo-strip__track {
     animation-play-state: paused;
   }
 }
-
-/* Mobile semplificato */
+ 
+/* Mobile */
 @media (max-width: 768px) {
   .logo-strip {
     height: var(--section-height-mobile);
   }
-
+ 
   .logo-strip__group {
     gap: var(--gap-mobile);
     padding-right: var(--gap-mobile);
   }
-
+ 
   .logo-wave {
     height: 30px;
   }
-
+ 
   .logo-leroy {
     height: 31px;
   }
-
+ 
   .logo-auto1 {
     height: 33px;
   }
-
+ 
   .logo-witailer {
     height: 29px;
   }
-
+ 
   .logo-chef {
     height: 24px;
   }
 }
-
+ 
 @keyframes marquee {
   from {
     transform: translateX(0);
