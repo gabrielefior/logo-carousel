@@ -4,8 +4,8 @@
 :root {
   --logo-height: 56px;          /* Altezza base loghi desktop */
   --logo-height-mobile: 34px;   /* Altezza base loghi mobile */
-  --section-height: 150px;      /* Altezza totale widget desktop */
-  --section-height-mobile: 92px;
+  --section-height: 220px;      /* Altezza totale widget desktop */
+  --section-height-mobile: 130px;
   --gap: 72px;                  /* Spazio tra i loghi desktop */
   --gap-mobile: 34px;
   --scroll-duration: 24s;       /* Più alto = più lento */
