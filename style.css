@@ -40,7 +40,7 @@ body {
   align-items: center;
   width: 100%;
   height: var(--section-height);
-  background: transparent;
+  background: #ffffff;
   overflow: hidden;
 
   /* sfumatura ai lati senza colore fisso */
