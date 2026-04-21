@@ -2,7 +2,7 @@
    QUICK EDITS — cambia solo questi valori
    ========================================= */
 :root {
-  --logo-height: 56px;          /* Altezza base loghi desktop */
+  --logo-height: 100px;          /* Altezza base loghi desktop */
   --logo-height-mobile: 34px;   /* Altezza base loghi mobile */
   --section-height: 220px;      /* Altezza totale widget desktop */
   --section-height-mobile: 130px;
